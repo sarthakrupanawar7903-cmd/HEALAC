@@ -14,7 +14,9 @@ from groq import Groq
 from dotenv import load_dotenv
 
 # --- Tesseract path ---
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+import platform
+if platform.system() == "Windows":
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # --- Load env ---
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
