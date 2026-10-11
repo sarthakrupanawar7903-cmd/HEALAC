@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HEALAC_Universal_Health_Record_v2",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["patient_context", "document_metadata", "fhir_resources", "ai_insights"],
+  "properties": {
+    "patient_context": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["patient_id", "abha_linked"],
+      "properties": {
+        "patient_id": { "type": "string" },
+        "abha_linked": { "type": "boolean" },
+        "name": { "type": "string" },
+        "age": { "type": "integer" },
+        "gender": { "type": "string", "enum": ["Male", "Female", "Other", "Unknown"] }
+      }
+    },
+    "document_metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["document_type", "upload_date"],
+      "properties": {
+        "file_name": { "type": "string" },
+        "upload_date": { "type": "string", "format": "date-time" },
+        "document_type": {
+          "type": "string",
+          "enum": ["Prescription", "Diagnostic Lab Report", "Discharge Summary", "Vaccination Record", "Imaging/Other"]
+        },
+        "facility_name": { "type": "string" }
+      }
+    },
+    "fhir_resources": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "DiagnosticReport": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["test_name", "value", "unit", "status"],
+            "properties": {
+              "test_name": { "type": "string" },
+              "value": { "type": "number" },
+              "unit": { "type": "string" },
+              "reference_range": { "type": "string" },
+              "status": { "type": "string", "enum": ["Normal", "High", "Low", "Critical"] },
+              "date": { "type": "string", "format": "date" }
+            }
+          }
+        },
+        "MedicationRequest": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["medicine_name", "dosage", "frequency"],
+            "properties": {
+              "medicine_name": { "type": "string" },
+              "dosage": { "type": "string" },
+              "frequency": { "type": "string" },
+              "timing": { "type": "string" },
+              "prescribed_by": { "type": "string" },
+              "date": { "type": "string", "format": "date" }
+            }
+          }
+        },
+        "Condition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "condition_name": { "type": "string" },
+              "clinical_status": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "ai_insights": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["plain_language_summary", "hindi_summary", "trend_analysis", "questions_to_ask_doctor"],
+      "properties": {
+        "plain_language_summary": { "type": "string" },
+        "hindi_summary": { "type": "string" },
+        "trend_analysis": { "type": "string" },
+        "drug_interactions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["severity", "description", "recommendation"],
+            "properties": {
+              "severity": { "type": "string", "enum": ["Mild", "Moderate", "Severe"] },
+              "description": { "type": "string" },
+              "recommendation": { "type": "string" }
+            }
+          }
+        },
+        "questions_to_ask_doctor": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "question_en": { "type": "string" },
+              "question_hi": { "type": "string" },
+              "rationale": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

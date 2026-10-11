@@ -1,0 +1,40 @@
+# Env files — CRITICAL
+.env
+.env.*
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+.venv/
+*.egg-info/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Database & uploads
+backend/uploads/
+backend/healac.db
+*.sqlite3
+*.db
+backend/chroma_db/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+error.log
