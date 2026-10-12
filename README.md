@@ -43,7 +43,7 @@ HEALAC turns messy, fragmented medical records into clear, actionable health ins
 
 ## ✨ Feature Highlights
 
-### 🎯 Core Requirements (Hackathon Brief)
+### 🎯 Core Requirements 
 
 <table>
 <tr>
