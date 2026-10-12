@@ -13,7 +13,12 @@
 Built for the **byteXL × Kampus.VC Hackathon 2026**
 Challenge: *AI-Powered Personal Health Copilot* — sponsored by Altrix Labs
 
-**Team:** Atlas SkillTech University
+**Team:** CTRLER
+
+Team Leader: Sarthak Rupanawar
+Team Member 1: 
+Team Member 2:
+Team Member 3:
 
 </div>
 
